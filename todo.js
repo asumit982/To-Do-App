@@ -13,4 +13,27 @@ function deleteTask (taskId) {}
 
 function addTask (task) {}
 
-function showNotification(text) {}
+function showNotification(text) {
+    alert(text);
+}
+
+function handleInputKeyPress(e){
+    if(e.key === 'Enter'){
+        const text = e.target.value;
+
+        if(!text){
+            showNotification('Task can not be empty');
+            return;
+        }
+      
+        const task = {
+            text,
+            id : Date.now().toString(),
+            done : false
+        }
+
+        e.target.value = ''
+        addTask(task);
+
+    }
+}
