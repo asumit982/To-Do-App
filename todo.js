@@ -86,4 +86,22 @@ function handleInputKeyPress(e){
     }
 }
 
+function handleClickListener(e){
+    const target = e.target;
+    console.log(target);
+
+    if(target.className === 'delete'){
+        const taskId = target.dataset.id;
+        deleteTask(taskId); 
+        return;
+    }
+
+    else if(target.className === 'custom-checkbox'){
+        const taskId = target.id;
+        markTaskAsComplete(taskId); 
+        return;
+    }
+}
+
 addTaskInput.addEventListener('keyup', handleInputKeyPress);
+document.addEventListener('click', handleClickListener);
